@@ -1,0 +1,178 @@
+{% extends "base.html" %}
+
+{% block title %}Ngô Tuấn Anh - Frontend & Java Developer{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="hero">
+    <div class="container">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h2 class="hero-subtitle"><span class="highlight">NGO TUAN ANH</span></h2>
+                <p class="hero-description">
+                    Frontend Developer & Java Enthusiast<br>
+                    Today's effort is the foundation for tomorrow's success.
+                </p>
+                
+                <div class="hero-actions">
+                    <a href="/blog" class="btn btn-primary">
+                        <i class="fas fa-book-open"></i> Đọc Bài Viết
+                    </a>
+                    <a href="/contact" class="btn btn-secondary">
+                        <i class="fas fa-envelope"></i> Liên Hệ Tôi
+                    </a>
+                </div>
+
+                <p class="hero-motto">Today's effort is the foundation for tomorrow's success.</p>
+                
+                <div class="social-links-hero">
+                    <a href="mailto:tuananh300604@gmail.com" target="_blank" title="Email">
+                        <i class="fas fa-envelope"></i>
+                    </a>
+                    <a href="https://github.com/tuananhcntt1" target="_blank" title="GitHub">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/in/tu%E1%BA%A5n-anh-ng%C3%B4-5a0319318" target="_blank" title="LinkedIn">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="hero-image">
+                <img src="{{ url_for('static', filename='assets/images/avt.jpg') }}" alt="Avatar" class="avatar-img">
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Featured Posts Section -->
+<section class="featured-posts">
+    <div class="container">
+        <h2 class="section-title">Bài Viết Nổi Bật</h2>
+        <p class="section-subtitle">Những bài viết giúp bạn nâng cao kỹ năng lập trình</p>
+        
+        <div class="posts-grid">
+            <article class="featured-post-card">
+                <img src="/static/assets/images/blog_thumbnails/java_basic_1.jpg" alt="Java Basic" class="featured-post-image">
+                <div class="post-content">
+                    <span class="post-category">Java</span>
+                    <h3 class="post-title">Hướng dẫn Học Lập trình Java Cơ bản - Phần 1</h3>
+                    <p class="post-description">Tìm hiểu các khái niệm nền tảng của Java: biến, kiểu dữ liệu, và các toán tử cơ bản.</p>
+                    <div class="post-footer">
+                        <span class="post-date">
+                            <i class="fas fa-calendar-alt"></i> 15 Tháng 12, 2024
+                        </span>
+                        <a href="/blog/1" class="read-more">Đọc thêm →</a>
+                    </div>
+                </div>
+            </article>
+            
+            <article class="featured-post-card">
+                <img src="/static/assets/images/blog_thumbnails/js_es6.jpg" alt="JavaScript ES6" class="featured-post-image">
+                <div class="post-content">
+                    <span class="post-category">JavaScript</span>
+                    <h3 class="post-title">JavaScript ES6+: Arrow Functions & Destructuring</h3>
+                    <p class="post-description">Khám phá những tính năng mạnh mẽ của JavaScript ES6+ để viết code sạch và hiệu quả hơn.</p>
+                    <div class="post-footer">
+                        <span class="post-date">
+                            <i class="fas fa-calendar-alt"></i> 10 Tháng 12, 2024
+                        </span>
+                        <a href="/blog/2" class="read-more">Đọc thêm →</a>
+                    </div>
+                </div>
+            </article>
+            
+            <article class="featured-post-card">
+                <img src="/static/assets/images/blog_thumbnails/java_oop.jpg" alt="Java OOP" class="featured-post-image">
+                <div class="post-content">
+                    <span class="post-category">Java</span>
+                    <h3 class="post-title">Java OOP: Kế Thừa và Đa Hình trong Thực Tiễn</h3>
+                    <p class="post-description">Hiểu rõ hơn về kế thừa, đa hình và cách áp dụng chúng vào các dự án thực tế.</p>
+                    <div class="post-footer">
+                        <span class="post-date">
+                            <i class="fas fa-calendar-alt"></i> 05 Tháng 12, 2024
+                        </span>
+                        <a href="/blog/3" class="read-more">Đọc thêm →</a>
+                    </div>
+                </div>
+            </article>
+        </div>
+        
+        <div class="view-all-posts">
+            <a href="/blog" class="btn btn-primary">
+                Xem Tất Cả Bài Viết
+                <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- Skills Section -->
+<section class="skills-section">
+    <div class="container">
+        <h2 class="section-title">Kỹ Năng Của Tôi</h2>
+        <p class="section-subtitle">Các công nghệ tôi đang sử dụng hàng ngày</p>
+        
+        <div class="skills-grid">
+            <div class="skill-card">
+                <div class="skill-icon">
+                    <i class="fab fa-js-square"></i>
+                </div>
+                <h3>JavaScript</h3>
+                <p>ES6+, Async/Await, DOM APIs</p>
+            </div>
+            
+            <div class="skill-card">
+                <div class="skill-icon">
+                    <i class="fab fa-java"></i>
+                </div>
+                <h3>Java</h3>
+                <p>OOP, Collections, Stream API</p>
+            </div>
+            
+            <div class="skill-card">
+                <div class="skill-icon">
+                    <i class="fab fa-react"></i>
+                </div>
+                <h3>React</h3>
+                <p>Hooks, Context API, State Management</p>
+            </div>
+            
+            <div class="skill-card">
+                <div class="skill-icon">
+                    <i class="fab fa-html5"></i>
+                </div>
+                <h3>HTML5 & CSS3</h3>
+                <p>Responsive Design, Flexbox, Grid</p>
+            </div>
+            
+            <div class="skill-card">
+                <div class="skill-icon">
+                    <i class="fab fa-python"></i>
+                </div>
+                <h3>Python</h3>
+                <p>Flask, Basics, Data Science</p>
+            </div>
+            
+            <div class="skill-card">
+                <div class="skill-icon">
+                    <i class="fab fa-git"></i>
+                </div>
+                <h3>Git & GitHub</h3>
+                <p>Version Control, Collaboration</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA Section -->
+<section class="cta-section">
+    <div class="container">
+        <h2>Bạn Có Dự Án Thú Vị?</h2>
+        <p>Hãy liên hệ với tôi để cùng thảo luận về các ý tưởng hoặc dự án của bạn.</p>
+        <a href="/contact" class="btn btn-primary btn-lg">
+            <i class="fas fa-paper-plane"></i> Gửi Tin Nhắn
+        </a>
+    </div>
+</section>
+{% endblock %}

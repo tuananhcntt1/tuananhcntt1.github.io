@@ -1,0 +1,532 @@
+{% extends "base.html" %}
+
+{% block title %}{{ post.title }} - Ngô Tuấn Anh Blog{% endblock %}
+
+{% block content %}
+<!-- Post Header -->
+<section class="post-detail-header">
+    <div class="container">
+        <div class="breadcrumb">
+            <a href="/">Trang Chủ</a>
+            <span>/</span>
+            <a href="/blog">Bài Viết</a>
+            <span>/</span>
+            <span class="current">{{ post.title }}</span>
+        </div>
+        
+        <h1 class="post-title">{{ post.title }}</h1>
+        
+        <div class="post-meta">
+            <span class="post-category-badge badge-{{ post.category.lower() }}">{{ post.category }}</span>
+            <span class="post-date">
+                <i class="fas fa-calendar-alt"></i> {{ post.date }}
+            </span>
+            <span class="post-read-time">
+                <i class="fas fa-clock"></i> 5 phút đọc
+            </span>
+        </div>
+    </div>
+</section>
+
+<!-- Featured Image -->
+<section class="post-featured-image">
+    <div class="container">
+        <img src="{{ post.image }}" alt="{{ post.title }}" class="featured-img">
+    </div>
+</section>
+
+<!-- Post Content -->
+<section class="post-content-section">
+    <div class="container">
+        <article class="post-article">
+            <div class="post-body">
+                <h2>Giới Thiệu</h2>
+                <p>{{ post.description }}</p>
+                
+                <h2>Nội Dung Chính</h2>
+                {% if post.category == 'Java' %}
+                    <h3>Khái Niệm Cơ Bản</h3>
+                    <p>Java là một ngôn ngữ lập trình hướng đối tượng được phát triển bởi Sun Microsystems. Java nổi tiếng vì khả năng "Write Once, Run Anywhere" (WORA) nhờ việc sử dụng Java Virtual Machine (JVM).</p>
+                    
+                    <h3>Ưu Điểm Của Java</h3>
+                    <ul>
+                        <li><strong>Độc Lập Nền Tảng:</strong> Code Java có thể chạy trên bất kỳ nền tảng nào có JVM</li>
+                        <li><strong>Hướng Đối Tượng:</strong> Giúp code được tổ chức tốt hơn</li>
+                        <li><strong>Quản Lý Bộ Nhớ Tự Động:</strong> Garbage Collector tự động xóa các đối tượng không sử dụng</li>
+                        <li><strong>An Toàn:</strong> Có cơ chế bảo mật mạnh mẽ</li>
+                        <li><strong>Hiệu Suất Cao:</strong> Khi được optimize tốt</li>
+                    </ul>
+                    
+                    <h3>Cú Pháp Cơ Bản</h3>
+                    <pre><code>public class HelloWorld {
+    public static void main(String[] args) {
+        System.out.println("Hello, World!");
+    }
+}</code></pre>
+                    
+                    <h3>Các Khái Niệm Chính</h3>
+                    <p><strong>Biến:</strong> Là những vị trí lưu trữ dữ liệu. Trong Java, bạn phải khai báo kiểu dữ liệu trước khi sử dụng biến.</p>
+                    <p><strong>Kiểu Dữ Liệu:</strong> Java có các kiểu dữ liệu nguyên thủy như int, double, boolean, char, v.v.</p>
+                    <p><strong>Lớp (Class):</strong> Là khuôn mẫu để tạo các đối tượng. Mỗi lớp có các thuộc tính (fields) và phương thức (methods).</p>
+                    
+                    <h3>Các Toán Tử</h3>
+                    <p>Java hỗ trợ các toán tử cơ bản:</p>
+                    <ul>
+                        <li>Toán tử Số học: +, -, *, /, %</li>
+                        <li>Toán tử So Sánh: ==, !=, &lt;, &gt;, &lt;=, &gt;=</li>
+                        <li>Toán tử Logic: &&, ||, !</li>
+                        <li>Toán tử Gán: =, +=, -=, *=, /=</li>
+                    </ul>
+                
+                {% elif post.category == 'JavaScript' %}
+                    <h3>JavaScript Là Gì?</h3>
+                    <p>JavaScript là ngôn ngữ lập trình được sử dụng chủ yếu trong web browsers để tạo tính tương tác cho các trang web. Nó cũng có thể được sử dụng phía server với Node.js.</p>
+                    
+                    <h3>Đặc Điểm Của JavaScript</h3>
+                    <ul>
+                        <li><strong>Linh Hoạt:</strong> Là ngôn ngữ động, không yêu cầu khai báo kiểu</li>
+                        <li><strong>Chạy Trên Browser:</strong> Không cần biên dịch</li>
+                        <li><strong>Hỗ Trợ Lập Trình Hàm:</strong> Có thể sử dụng first-class functions</li>
+                        <li><strong>Bất Đồng Bộ:</strong> Hỗ trợ Promises, async/await</li>
+                    </ul>
+                    
+                    <h3>Cú Pháp Cơ Bản</h3>
+                    <pre><code>// Biến
+const name = "JavaScript";
+let count = 0;
+
+// Hàm
+function greet(name) {
+    return `Hello, ${name}!`;
+}
+
+// Arrow Function
+const add = (a, b) =&gt; a + b;</code></pre>
+                    
+                    <h3>DOM Manipulation</h3>
+                    <p>JavaScript cho phép bạn thao tác với DOM (Document Object Model) để thay đổi nội dung, style, và cấu trúc của trang web.</p>
+                    
+                    <h3>ES6+ Features</h3>
+                    <ul>
+                        <li>Arrow Functions (=&gt;)</li>
+                        <li>Destructuring</li>
+                        <li>Spread Operator (...)</li>
+                        <li>Template Literals (`string`)</li>
+                        <li>Classes</li>
+                        <li>Modules (import/export)</li>
+                    </ul>
+                
+                {% elif post.category == 'CSS' %}
+                    <h3>CSS Là Gì?</h3>
+                    <p>CSS (Cascading Style Sheets) là ngôn ngữ được sử dụng để tạo style và layout cho các trang web HTML.</p>
+                    
+                    <h3>Cú Pháp Cơ Bản</h3>
+                    <pre><code>/* Selector { Property: Value; } */
+.container {
+    width: 1200px;
+    margin: 0 auto;
+    background-color: #f0f0f0;
+}</code></pre>
+                    
+                    <h3>Các Cách Chọn Phần Tử</h3>
+                    <ul>
+                        <li><strong>Element Selector:</strong> p, div, h1</li>
+                        <li><strong>Class Selector:</strong> .class-name</li>
+                        <li><strong>ID Selector:</strong> #id-name</li>
+                        <li><strong>Attribute Selector:</strong> [type="text"]</li>
+                        <li><strong>Pseudo-class:</strong> :hover, :active, :focus</li>
+                    </ul>
+                
+                {% else %}
+                    <p>{{ post.content }}</p>
+                {% endif %}
+                
+                <h2>Kết Luận</h2>
+                <p>Học lập trình cần sự kiên nhẫn và thực hành thường xuyên. Hãy bắt đầu với các khái niệm cơ bản và dần dần nâng cao kỹ năng của bạn. Chúc bạn học tập hiệu quả!</p>
+            </div>
+            
+            <!-- Post Sidebar -->
+            <aside class="post-sidebar">
+                <div class="sidebar-widget">
+                    <h3>Chia Sẻ Bài Viết</h3>
+                    <div class="share-buttons">
+                        <a href="https://facebook.com/sharer/sharer.php?u=https://example.com/blog/{{ post.id }}" target="_blank" class="share-btn fb" title="Facebook">
+                            <i class="fab fa-facebook"></i>
+                        </a>
+                        <a href="https://twitter.com/intent/tweet?url=https://example.com/blog/{{ post.id }}&text={{ post.title }}" target="_blank" class="share-btn tw" title="Twitter">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="https://linkedin.com/sharing/share-offsite/?url=https://example.com/blog/{{ post.id }}" target="_blank" class="share-btn li" title="LinkedIn">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="mailto:?subject={{ post.title }}&body=Check%20this%20post:%20{{ post.title }}" class="share-btn em" title="Email">
+                            <i class="fas fa-envelope"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="sidebar-widget">
+                    <h3>Thông Tin Tác Giả</h3>
+                    <div class="author-card">
+                        <img src="{{ url_for('static', filename='assets/images/avt.jpg') }}" alt="Ngô Tuấn Anh" class="author-avatar">
+                        <h4>Ngô Tuấn Anh</h4>
+                        <p>Frontend Developer & Java Enthusiast. Passionate about clean code and modern UI/UX design.</p>
+                        <a href="/about" class="btn btn-primary btn-sm">Xem Thêm</a>
+                    </div>
+                </div>
+            </aside>
+        </article>
+    </div>
+</section>
+
+<!-- Related Posts -->
+<section class="related-posts">
+    <div class="container">
+        <h2 class="section-title">Bài Viết Liên Quan</h2>
+        <p class="section-subtitle">Những bài viết khác cùng chủ đề</p>
+        
+        <div class="related-posts-grid">
+            {% for related_post in related_posts %}
+                <article class="related-post-card">
+                    <div class="post-image">
+                        <img src="{{ related_post.image }}" alt="{{ related_post.title }}" class="post-img">
+                    </div>
+                    <div class="related-post-content">
+                        <span class="post-category-badge badge-{{ related_post.category.lower() }}">{{ related_post.category }}</span>
+                        <h3 class="related-post-title">{{ related_post.title }}</h3>
+                        <p class="related-post-desc">{{ related_post.description[:80] }}...</p>
+                        <a href="/blog/{{ related_post.id }}" class="read-more">Đọc Bài →</a>
+                    </div>
+                </article>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- CTA Section -->
+<section class="post-cta">
+    <div class="container">
+        <h2>Có Câu Hỏi Hoặc Muốn Trao Đổi?</h2>
+        <p>Hãy liên hệ với tôi qua email hoặc social media</p>
+        <div class="cta-buttons">
+            <a href="/contact" class="btn btn-primary">
+                <i class="fas fa-envelope"></i> Gửi Tin Nhắn
+            </a>
+            <a href="https://github.com/tuananhcntt1" target="_blank" class="btn btn-secondary">
+                <i class="fab fa-github"></i> GitHub
+            </a>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block extra_css %}
+<style>
+    .post-detail-header {
+        padding: var(--spacing-2xl) 0;
+        background-color: var(--bg-secondary);
+        border-bottom: 1px solid var(--border-color);
+    }
+
+    .breadcrumb {
+        margin-bottom: var(--spacing-xl);
+        font-size: var(--font-size-sm);
+        color: var(--text-secondary);
+    }
+
+    .breadcrumb a {
+        color: var(--primary-color);
+    }
+
+    .breadcrumb a:hover {
+        text-decoration: underline;
+    }
+
+    .breadcrumb span {
+        margin: 0 var(--spacing-sm);
+    }
+
+    .post-title {
+        font-size: var(--font-size-4xl);
+        margin-bottom: var(--spacing-lg);
+        color: var(--text-primary);
+    }
+
+    .post-meta {
+        display: flex;
+        align-items: center;
+        gap: var(--spacing-lg);
+        flex-wrap: wrap;
+        font-size: var(--font-size-sm);
+        color: var(--text-secondary);
+    }
+
+    .post-category-badge {
+        padding: var(--spacing-xs) var(--spacing-sm);
+        border-radius: var(--radius-sm);
+        font-weight: 600;
+    }
+
+    .post-featured-image {
+        padding: var(--spacing-2xl) 0;
+    }
+
+    .featured-img {
+        width: 100%;
+        height: auto;
+        max-height: 500px;
+        object-fit: cover;
+        border-radius: var(--radius-lg);
+        box-shadow: var(--shadow-lg);
+    }
+
+    .post-content-section {
+        padding: var(--spacing-2xl) 0;
+    }
+
+    .post-article {
+        display: grid;
+        grid-template-columns: 1fr 300px;
+        gap: var(--spacing-2xl);
+    }
+
+    .post-body {
+        font-size: var(--font-size-lg);
+        line-height: 1.8;
+        color: var(--text-primary);
+    }
+
+    .post-body h2 {
+        margin-top: var(--spacing-2xl);
+        margin-bottom: var(--spacing-md);
+        font-size: var(--font-size-2xl);
+    }
+
+    .post-body h3 {
+        margin-top: var(--spacing-lg);
+        margin-bottom: var(--spacing-md);
+        font-size: var(--font-size-xl);
+    }
+
+    .post-body p {
+        margin-bottom: var(--spacing-lg);
+    }
+
+    .post-body ul, .post-body ol {
+        margin-bottom: var(--spacing-lg);
+    }
+
+    .post-body li {
+        margin-bottom: var(--spacing-sm);
+    }
+
+    .post-body code {
+        background-color: var(--bg-secondary);
+        padding: 2px 6px;
+        border-radius: var(--radius-sm);
+        font-family: var(--font-mono);
+        color: var(--primary-color);
+    }
+
+    .post-body pre {
+        background-color: var(--bg-secondary);
+        padding: var(--spacing-lg);
+        border-radius: var(--radius-lg);
+        overflow-x: auto;
+        margin-bottom: var(--spacing-lg);
+        border-left: 4px solid var(--primary-color);
+    }
+
+    .post-body pre code {
+        background-color: transparent;
+        padding: 0;
+        color: var(--text-primary);
+    }
+
+    .post-sidebar {
+        display: flex;
+        flex-direction: column;
+        gap: var(--spacing-lg);
+    }
+
+    .sidebar-widget {
+        padding: var(--spacing-lg);
+        background-color: var(--bg-secondary);
+        border-radius: var(--radius-lg);
+    }
+
+    .sidebar-widget h3 {
+        margin-bottom: var(--spacing-md);
+        font-size: var(--font-size-lg);
+    }
+
+    .share-buttons {
+        display: flex;
+        gap: var(--spacing-md);
+        flex-wrap: wrap;
+    }
+
+    .share-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        border-radius: var(--radius-full);
+        color: white;
+        font-size: var(--font-size-lg);
+        transition: var(--transition-base);
+    }
+
+    .share-btn.fb {
+        background-color: #1877F2;
+    }
+
+    .share-btn.tw {
+        background-color: #1DA1F2;
+    }
+
+    .share-btn.li {
+        background-color: #0A66C2;
+    }
+
+    .share-btn.em {
+        background-color: var(--primary-color);
+    }
+
+    .share-btn:hover {
+        transform: translateY(-3px);
+        box-shadow: var(--shadow-lg);
+    }
+
+    .author-card {
+        text-align: center;
+    }
+
+    .author-avatar {
+        width: 80px;
+        height: 80px;
+        border-radius: var(--radius-full);
+        object-fit: cover;
+        margin-bottom: var(--spacing-md);
+    }
+
+    .author-card h4 {
+        margin-bottom: var(--spacing-sm);
+    }
+
+    .author-card p {
+        font-size: var(--font-size-sm);
+        color: var(--text-secondary);
+        margin-bottom: var(--spacing-md);
+    }
+
+    .btn-sm {
+        padding: var(--spacing-xs) var(--spacing-md);
+        font-size: var(--font-size-sm);
+    }
+
+    .related-posts {
+        padding: var(--spacing-2xl) 0;
+        background-color: var(--bg-secondary);
+    }
+
+    .related-posts-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: var(--spacing-lg);
+    }
+
+    .related-post-card {
+        background-color: var(--bg-primary);
+        border-radius: var(--radius-lg);
+        overflow: hidden;
+        box-shadow: var(--shadow-md);
+        transition: var(--transition-base);
+    }
+
+    .related-post-card:hover {
+        transform: translateY(-4px);
+        box-shadow: var(--shadow-lg);
+    }
+
+    .post-image {
+        width: 100%;
+        height: 200px;
+        overflow: hidden;
+    }
+
+    .post-img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .related-post-content {
+        padding: var(--spacing-lg);
+    }
+
+    .related-post-title {
+        font-size: var(--font-size-lg);
+        margin-bottom: var(--spacing-sm);
+    }
+
+    .related-post-desc {
+        font-size: var(--font-size-sm);
+        color: var(--text-secondary);
+        margin-bottom: var(--spacing-md);
+    }
+
+    .post-cta {
+        padding: var(--spacing-2xl) 0;
+        background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+        color: white;
+        text-align: center;
+    }
+
+    .post-cta h2 {
+        color: white;
+        margin-bottom: var(--spacing-md);
+    }
+
+    .post-cta p {
+        color: rgba(255, 255, 255, 0.9);
+        margin-bottom: var(--spacing-xl);
+    }
+
+    .cta-buttons {
+        display: flex;
+        justify-content: center;
+        gap: var(--spacing-lg);
+        flex-wrap: wrap;
+    }
+
+    .post-cta .btn-primary {
+        background-color: white;
+        color: var(--primary-color);
+    }
+
+    .post-cta .btn-secondary {
+        border-color: white;
+        color: white;
+    }
+
+    @media (max-width: 768px) {
+        .post-article {
+            grid-template-columns: 1fr;
+        }
+
+        .post-title {
+            font-size: var(--font-size-3xl);
+        }
+
+        .post-body {
+            font-size: var(--font-size-md);
+        }
+
+        .cta-buttons {
+            flex-direction: column;
+        }
+    }
+</style>
+{% endblock %}

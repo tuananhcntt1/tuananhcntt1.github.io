@@ -1,0 +1,282 @@
+{% extends "base.html" %}
+
+{% block title %}Liên Hệ - Ngô Tuấn Anh{% endblock %}
+
+{% block content %}
+<!-- Contact Header -->
+<section class="contact-header">
+    <div class="container">
+        <h1 class="page-title">Liên Hệ Với Tôi</h1>
+        <p class="page-subtitle">Tôi luôn sẵn sàng lắng nghe và trao đổi</p>
+    </div>
+</section>
+
+<!-- Contact Content -->
+<section class="contact-content">
+    <div class="container">
+        <div class="contact-wrapper">
+            <!-- Contact Form -->
+            <div class="contact-form-section">
+                <h2>Gửi Tin Nhắn</h2>
+                <form id="contactForm" class="contact-form">
+                    <div class="form-group">
+                        <label for="name" class="form-label">Tên Của Bạn *</label>
+                        <input 
+                            type="text" 
+                            id="name" 
+                            name="name" 
+                            class="form-input"
+                            placeholder="Nhập tên của bạn"
+                            required
+                        >
+                        <span class="form-error" id="nameError"></span>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email" class="form-label">Email *</label>
+                        <input 
+                            type="email" 
+                            id="email" 
+                            name="email" 
+                            class="form-input"
+                            placeholder="Nhập email của bạn"
+                            required
+                        >
+                        <span class="form-error" id="emailError"></span>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="subject" class="form-label">Tiêu Đề *</label>
+                        <input 
+                            type="text" 
+                            id="subject" 
+                            name="subject" 
+                            class="form-input"
+                            placeholder="Tiêu đề tin nhắn"
+                            required
+                        >
+                        <span class="form-error" id="subjectError"></span>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message" class="form-label">Tin Nhắn *</label>
+                        <textarea 
+                            id="message" 
+                            name="message" 
+                            class="form-textarea"
+                            placeholder="Viết tin nhắn của bạn..."
+                            rows="6"
+                            required
+                        ></textarea>
+                        <span class="form-error" id="messageError"></span>
+                    </div>
+                    
+                    <div id="successMessage" class="success-message" style="display: none;">
+                        <i class="fas fa-check-circle"></i>
+                        <p id="successText"></p>
+                    </div>
+                    
+                    <div id="errorMessage" class="error-message" style="display: none;">
+                        <i class="fas fa-exclamation-circle"></i>
+                        <p id="errorText"></p>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary btn-lg">
+                        <i class="fas fa-paper-plane"></i> Gửi Tin Nhắn
+                    </button>
+                </form>
+            </div>
+            
+            <!-- Contact Info -->
+            <div class="contact-info-section">
+                <h2>Liên Hệ Trực Tiếp</h2>
+                
+                <div class="contact-info-cards">
+                    <div class="contact-card">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <h3>Email</h3>
+                        <p>Gửi email cho tôi bất kỳ lúc nào</p>
+                        <a href="mailto:tuananh300604@gmail.com" class="contact-link">
+                            tuananh300604@gmail.com
+                        </a>
+                    </div>
+                    
+                    <div class="contact-card">
+                        <div class="contact-icon">
+                            <i class="fab fa-github"></i>
+                        </div>
+                        <h3>GitHub</h3>
+                        <p>Xem code và các dự án của tôi</p>
+                        <a href="https://github.com/tuananhcntt1" target="_blank" class="contact-link">
+                            @tuananhcntt1
+                        </a>
+                    </div>
+                    
+                    <div class="contact-card">
+                        <div class="contact-icon">
+                            <i class="fab fa-linkedin"></i>
+                        </div>
+                        <h3>LinkedIn</h3>
+                        <p>Kết nối với tôi trên LinkedIn</p>
+                        <a href="https://www.linkedin.com/in/tu%E1%BA%A5n-anh-ng%C3%B4-5a0319318" target="_blank" class="contact-link">
+                            Ngô Tuấn Anh
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="contact-social">
+                    <h3>Theo Dõi Tôi</h3>
+                    <div class="social-icons">
+                        <a href="https://github.com/tuananhcntt1" target="_blank" title="GitHub">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/in/tu%E1%BA%A5n-anh-ng%C3%B4-5a0319318" target="_blank" title="LinkedIn">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="mailto:tuananh300604@gmail.com" title="Email">
+                            <i class="fas fa-envelope"></i>
+                        </a>
+                        <a href="https://facebook.com" target="_blank" title="Facebook">
+                            <i class="fab fa-facebook"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Availability -->
+<section class="availability-section">
+    <div class="container">
+        <div class="availability-card">
+            <div class="availability-icon">
+                <i class="fas fa-clock"></i>
+            </div>
+            <h3>Thời Gian Phản Hồi</h3>
+            <p>Tôi thường phản hồi tin nhắn trong vòng <strong>24 giờ</strong></p>
+            <p class="availability-note">Hay liên hệ qua email để được phản hồi nhanh nhất</p>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    const contactForm = document.getElementById('contactForm');
+    
+    contactForm.addEventListener('submit', async function(e) {
+        e.preventDefault();
+        
+        // Get form data
+        const name = document.getElementById('name').value.trim();
+        const email = document.getElementById('email').value.trim();
+        const subject = document.getElementById('subject').value.trim();
+        const message = document.getElementById('message').value.trim();
+        
+        // Validate
+        let isValid = true;
+        
+        if (!name) {
+            showError('nameError', 'Vui lòng nhập tên');
+            isValid = false;
+        }
+        
+        if (!email) {
+            showError('emailError', 'Vui lòng nhập email');
+            isValid = false;
+        } else if (!isValidEmail(email)) {
+            showError('emailError', 'Email không hợp lệ');
+            isValid = false;
+        }
+        
+        if (!subject) {
+            showError('subjectError', 'Vui lòng nhập tiêu đề');
+            isValid = false;
+        }
+        
+        if (!message) {
+            showError('messageError', 'Vui lòng nhập tin nhắn');
+            isValid = false;
+        }
+        
+        if (!isValid) return;
+        
+        // Clear errors
+        clearAllErrors();
+        
+        // Send form
+        try {
+            const response = await fetch('/api/send-message', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    name: name,
+                    email: email,
+                    subject: subject,
+                    message: message
+                })
+            });
+            
+            const data = await response.json();
+            
+            if (response.ok) {
+                // Show success
+                showSuccessMessage(data.message);
+                contactForm.reset();
+            } else {
+                showErrorMessage(data.error || 'Có lỗi xảy ra');
+            }
+        } catch (error) {
+            showErrorMessage('Không thể gửi tin nhắn. Vui lòng thử lại sau.');
+            console.error('Error:', error);
+        }
+    });
+    
+    function isValidEmail(email) {
+        const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return re.test(email);
+    }
+    
+    function showError(elementId, message) {
+        const element = document.getElementById(elementId);
+        if (element) {
+            element.textContent = message;
+            element.style.display = 'block';
+        }
+    }
+    
+    function clearAllErrors() {
+        document.querySelectorAll('.form-error').forEach(el => {
+            el.textContent = '';
+            el.style.display = 'none';
+        });
+    }
+    
+    function showSuccessMessage(message) {
+        const successDiv = document.getElementById('successMessage');
+        const successText = document.getElementById('successText');
+        successText.textContent = message;
+        successDiv.style.display = 'block';
+        
+        document.getElementById('errorMessage').style.display = 'none';
+        
+        setTimeout(() => {
+            successDiv.style.display = 'none';
+        }, 5000);
+    }
+    
+    function showErrorMessage(message) {
+        const errorDiv = document.getElementById('errorMessage');
+        const errorText = document.getElementById('errorText');
+        errorText.textContent = message;
+        errorDiv.style.display = 'block';
+        
+        document.getElementById('successMessage').style.display = 'none';
+    }
+</script>
+{% endblock %}

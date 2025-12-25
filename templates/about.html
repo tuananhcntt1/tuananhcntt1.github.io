@@ -1,0 +1,161 @@
+{% extends "base.html" %}
+
+{% block title %}Thông Tin - Ngô Tuấn Anh{% endblock %}
+
+{% block content %}
+<!-- About Header -->
+<section class="about-header">
+    <div class="container">
+        <h1 class="page-title">Về Tôi</h1>
+        <p class="page-subtitle">Hành trình lập trình của Ngô Tuấn Anh</p>
+    </div>
+</section>
+
+<!-- About Content -->
+<section class="about-content">
+    <div class="container">
+        <div class="about-section">
+            <div class="about-left">
+                <img src="{{ url_for('static', filename='assets/images/avt.jpg') }}" alt="Avatar" class="avatar-large-img">
+            </div>
+            
+            <div class="about-right">
+                <h2>GIỚI THIỆU BẢN THÂN</h2>
+                <p>
+                    Tôi là Ngô Tuấn Anh, một Frontend Developer đầy đam mê với kinh nghiệm làm việc với 
+                    JavaScript, React, và Java. Tôi luôn tin rằng code sạch, dễ đọc và hiệu quả là chìa khóa 
+                    của một dự án thành công.
+                </p>
+                
+                <p>
+                    Với hơn 3 năm kinh nghiệm, tôi đã tham gia vào nhiều dự án từ nhỏ đến lớn, làm việc với 
+                    các team đa quốc gia và học hỏi những kỹ năng quý báu. Tôi đam mê chia sẻ kiến thức 
+                    qua blog và đóng góp vào cộng đồng developer.
+                </p>
+                
+                <h3>Thế Mạnh Của Tôi</h3>
+                <ul class="strengths-list">
+                    <li><i class="fas fa-check"></i> Lập trình Frontend với JavaScript & React</li>
+                    <li><i class="fas fa-check"></i> Thiết kế Responsive với HTML5, CSS3 & Flexbox/Grid</li>
+                    <li><i class="fas fa-check"></i> Lập trình Java với OOP và Design Patterns</li>
+                    <li><i class="fas fa-check"></i> Quản lý Version Control với Git & GitHub</li>
+                    <li><i class="fas fa-check"></i> Debugging và Problem Solving</li>
+                    <li><i class="fas fa-check"></i> Chia sẻ kiến thức và mentoring</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Timeline / Certifications -->
+<section class="certifications-section">
+    <div class="container">
+        <h2 class="section-title">Chứng Chỉ & Thành Tích</h2>
+        <p class="section-subtitle">Các khóa học hoàn thành và chứng chỉ thu được</p>
+        
+        <div class="timeline">
+            {% for cert in certifications %}
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <div class="timeline-year">{{ cert.year }}</div>
+                    <h3 class="timeline-title">{{ cert.title }}</h3>
+                    <p class="timeline-issuer">Từ: <strong>{{ cert.issuer }}</strong></p>
+                    <p class="timeline-description">{{ cert.description }}</p>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- CV Download Section -->
+<section class="cv-download-section">
+    <div class="container">
+        <h2 class="section-title">Tải Xuống Tiếp Lộc Công Việc</h2>
+        <p class="section-subtitle">Chọn ngôn ngữ phù hợp với nhu cầu của bạn</p>
+        
+        <div class="cv-buttons-container">
+            <a href="/static/assets/cv/CV_Ngo_Tuan_Anh_VI.pdf" download class="cv-btn cv-btn-vi">
+                <div class="cv-btn-icon">
+                    <i class="fas fa-file-pdf"></i>
+                </div>
+                <div class="cv-btn-text">
+                    <h3>Tiếng Việt</h3>
+                    <p>Tải CV (Tiếng Việt)</p>
+                </div>
+                <div class="cv-btn-arrow">
+                    <i class="fas fa-download"></i>
+                </div>
+            </a>
+            
+            <a href="/static/assets/cv/CV_Ngo_Tuan_Anh_EN.pdf" download class="cv-btn cv-btn-en">
+                <div class="cv-btn-icon">
+                    <i class="fas fa-file-pdf"></i>
+                </div>
+                <div class="cv-btn-text">
+                    <h3>English</h3>
+                    <p>Download CV (English)</p>
+                </div>
+                <div class="cv-btn-arrow">
+                    <i class="fas fa-download"></i>
+                </div>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- Skills Grid -->
+<section class="detailed-skills">
+    <div class="container">
+        <h2 class="section-title">Các Kỹ Năng Chi Tiết</h2>
+        <p class="section-subtitle">Các công nghệ và công cụ tôi thành thạo</p>
+        
+        <div class="skills-categories">
+            <div class="skill-category">
+                <h3>Frontend Development</h3>
+                <div class="skill-tags">
+                    <span class="skill-tag">HTML5</span>
+                    <span class="skill-tag">CSS3</span>
+                    <span class="skill-tag">JavaScript (ES6+)</span>
+                    <span class="skill-tag">React</span>
+                    <span class="skill-tag">Responsive Design</span>
+                    <span class="skill-tag">Flexbox & Grid</span>
+                </div>
+            </div>
+            
+            <div class="skill-category">
+                <h3>Backend & Languages</h3>
+                <div class="skill-tags">
+                    <span class="skill-tag">Java</span>
+                    <span class="skill-tag">Python</span>
+                    <span class="skill-tag">Flask</span>
+                    <span class="skill-tag">Node.js (Basics)</span>
+                </div>
+            </div>
+            
+            <div class="skill-category">
+                <h3>Tools & Platforms</h3>
+                <div class="skill-tags">
+                    <span class="skill-tag">Git & GitHub</span>
+                    <span class="skill-tag">VS Code</span>
+                    <span class="skill-tag">NPM</span>
+                    <span class="skill-tag">Chrome DevTools</span>
+                    <span class="skill-tag">Figma (Design Basics)</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Contact CTA -->
+<section class="about-cta">
+    <div class="container">
+        <h2>Muốn Hợp Tác?</h2>
+        <p>Nếu bạn có dự án thú vị hoặc chỉ muốn trao đổi, hãy liên hệ với tôi</p>
+        <a href="/contact" class="btn btn-primary btn-lg">
+            <i class="fas fa-handshake"></i> Liên Hệ Ngay
+        </a>
+    </div>
+</section>
+{% endblock %}

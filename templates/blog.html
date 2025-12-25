@@ -1,0 +1,186 @@
+{% extends "base.html" %}
+
+{% block title %}Bài Viết - Ngô Tuấn Anh Blog{% endblock %}
+
+{% block content %}
+<!-- Blog Header -->
+<section class="blog-header">
+    <div class="container">
+        <h1 class="page-title">Tất Cả Bài Viết</h1>
+        <p class="page-subtitle">Chia sẻ kiến thức và kinh nghiệm lập trình</p>
+    </div>
+</section>
+
+<!-- Blog Filter & Search -->
+<section class="blog-controls">
+    <div class="container">
+        <div class="filters">
+            <button class="filter-btn active" data-filter="all">
+                Tất Cả
+            </button>
+            <button class="filter-btn" data-filter="java">
+                Java
+            </button>
+            <button class="filter-btn" data-filter="javascript">
+                JavaScript
+            </button>
+            <button class="filter-btn" data-filter="css">
+                CSS
+            </button>
+        </div>
+        
+        <div class="search-box">
+            <i class="fas fa-search"></i>
+            <input 
+                type="text" 
+                id="searchInput" 
+                class="search-input" 
+                placeholder="Tìm kiếm bài viết..."
+            >
+        </div>
+    </div>
+</section>
+
+<!-- Blog Posts Grid -->
+<section class="blog-posts-section">
+    <div class="container">
+        <div class="posts-grid-large" id="postsGrid">
+            {% for post in posts %}
+            <article class="blog-post-card" data-category="{{ post.category.lower() }}">
+                <div class="post-image">
+                    <img src="{{ post.image }}" alt="{{ post.title }}" class="post-image-img">
+                </div>
+                
+                <div class="post-card-content">
+                    <div class="post-header">
+                        <span class="badge badge-{{ post.category.lower() }}">
+                            {{ post.category }}
+                        </span>
+                        <span class="post-date">
+                            <i class="fas fa-calendar-alt"></i> {{ post.date }}
+                        </span>
+                    </div>
+                    
+                    <h2 class="post-card-title">{{ post.title }}</h2>
+                    <p class="post-card-description">{{ post.description }}</p>
+                    
+                    <div class="post-actions">
+                        <a href="/blog/{{ post.id }}" class="read-more-btn">
+                            Đọc Bài Viết
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </article>
+            {% endfor %}
+        </div>
+        
+        <!-- No Results Message -->
+        <div id="noResults" class="no-results" style="display: none;">
+            <div class="no-results-content">
+                <i class="fas fa-search"></i>
+                <h3>Không Tìm Thấy Bài Viết</h3>
+                <p>Hãy thử tìm kiếm với từ khóa khác hoặc xem tất cả bài viết.</p>
+                <button class="btn btn-secondary" onclick="clearSearch()">
+                    Xem Tất Cả
+                </button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Newsletter Section -->
+<section class="newsletter-section">
+    <div class="container">
+        <div class="newsletter-content">
+            <h2>Nhận Cập Nhật Bài Viết Mới</h2>
+            <p>Đăng ký để nhận thông báo khi có bài viết mới về lập trình</p>
+            
+            <form class="newsletter-form" onsubmit="handleNewsletterSignup(event)">
+                <input 
+                    type="email" 
+                    placeholder="Nhập email của bạn..." 
+                    required
+                    class="newsletter-input"
+                >
+                <button type="submit" class="btn btn-primary">
+                    <i class="fas fa-bell"></i> Đăng Ký
+                </button>
+            </form>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    // Blog filter functionality
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+            // Update active button
+            document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+            this.classList.add('active');
+            
+            // Filter posts
+            const filter = this.getAttribute('data-filter');
+            filterPosts(filter);
+        });
+    });
+
+    function filterPosts(category) {
+        const cards = document.querySelectorAll('.blog-post-card');
+        let visibleCount = 0;
+        
+        cards.forEach(card => {
+            if (category === 'all' || card.getAttribute('data-category') === category.toLowerCase()) {
+                card.style.display = '';
+                visibleCount++;
+            } else {
+                card.style.display = 'none';
+            }
+        });
+        
+        document.getElementById('noResults').style.display = visibleCount === 0 ? 'flex' : 'none';
+    }
+
+    // Search functionality
+    document.getElementById('searchInput').addEventListener('keyup', function() {
+        const searchTerm = this.value.toLowerCase();
+        const cards = document.querySelectorAll('.blog-post-card');
+        let visibleCount = 0;
+        
+        cards.forEach(card => {
+            const title = card.querySelector('.post-card-title').textContent.toLowerCase();
+            const description = card.querySelector('.post-card-description').textContent.toLowerCase();
+            
+            if (title.includes(searchTerm) || description.includes(searchTerm)) {
+                card.style.display = '';
+                visibleCount++;
+            } else {
+                card.style.display = 'none';
+            }
+        });
+        
+        document.getElementById('noResults').style.display = visibleCount === 0 && searchTerm !== '' ? 'flex' : 'none';
+    });
+
+    function clearSearch() {
+        document.getElementById('searchInput').value = '';
+        document.querySelectorAll('.blog-post-card').forEach(card => {
+            card.style.display = '';
+        });
+        document.getElementById('noResults').style.display = 'none';
+    }
+
+    // Newsletter signup
+    function handleNewsletterSignup(event) {
+        event.preventDefault();
+        const form = event.target;
+        const email = form.querySelector('.newsletter-input').value;
+        
+        // Simple validation and success message
+        alert('Cảm ơn bạn! Chúng tôi sẽ gửi cập nhật tới email: ' + email);
+        form.reset();
+    }
+</script>
+{% endblock %}
